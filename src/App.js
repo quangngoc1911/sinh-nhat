@@ -110,10 +110,12 @@ function App() {
       timeout: function (txt, dom) {
         let currentIndex = 0;
         let charArr = txt.split("");
+         let b = "";
         const intervalMobile = setInterval(function () {
           if (currentIndex < charArr.length) {
-            dom.textContent += charArr[currentIndex];
-            currentIndex++;
+            b += datetxtSplit[currentIndex];
+            setText(b);
+            currentIndex += 1;
           } else {
             clearInterval(intervalMobile);
           }
@@ -125,10 +127,10 @@ function App() {
   const fcMobile = mobile();
   if (window.innerWidth < 768) {
     setTimeout(() => {
-      fcMobile.timeout("26", document.querySelector(".day"));
+      fcMobile.timeout("11", document.querySelector(".day"));
     }, 5000);
     setTimeout(() => {
-      fcMobile.timeout("10", document.querySelector(".month"));
+      fcMobile.timeout("12", document.querySelector(".month"));
     }, 6000);
   }
 
