@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import $ from "jquery";
 
 function App() {
-  let datetxt = "1/1/2003";
+  let datetxt = "11/12/2001";
   let datatxtletter =
-    "Happy birthday! Wishing you a day filled with joy, laughter, and wonderful memories 💕";
-  let titleLetter = "Dear em :)))";
+    "Sinh nhật vui vẻ Miu nhé! Chúc cậu tuổi mới thật thành công, xinh đẹp và luôn đạt được những gì mình mong muốn. Rất hân hạnh được làm quen với Miu 💕";
+  let titleLetter = "Gửi Miu 😽";
   let datetxtSplit = datetxt.split("");
   const [text, setText] = useState("");
   let charArrDateLetter = datatxtletter.split("");
@@ -40,7 +40,12 @@ function App() {
 
   var intervalContent;
   var intervalTitle;
+  const audioRef = useRef(null);
+
   const openLetter = () => {
+    if (audioRef.current) {
+      audioRef.current.play(); 
+    }
     $(".box__letter").slideDown();
     setTimeout(function () {
       $(".letter__border").slideDown();
@@ -129,6 +134,8 @@ function App() {
 
   return (
     <div id="wrapper" className="App">
+      <audio ref={audioRef} src="/snTu.mp3" autoPlay loop controls={false} />
+
       <div className="flag__birthday">
         <img src="./images/1.png" alt="" width="350" className="flag__left" />
         <img src="./images/1.png" alt="" width="350" className="flag__right" />
@@ -164,7 +171,7 @@ function App() {
           </div>
           <div className="btn">
             <button id="btn__letter" onClick={openLetter}>
-              Nhận thư nè :)))
+              Click nhận thư nè
               <i className="fa-regular fa-envelope"></i>
             </button>
           </div>
@@ -172,11 +179,11 @@ function App() {
         <div className="right">
           <div className="box__account">
             <div className="image">
-              <img alt="" />
+              <img alt="hinhanh" src="/images/CamTu.jpg" />
             </div>
             <div className="name">
               <i className="fa-solid fa-heart"></i>
-              <span>Yenaiti</span>
+              <span>Cẩm Tú</span>
               <i className="fa-solid fa-heart"></i>
             </div>
             <div className="balloon_one">
